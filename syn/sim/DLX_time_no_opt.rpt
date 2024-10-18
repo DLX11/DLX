@@ -1,0 +1,59 @@
+Warning: Design 'DLX' has '23' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+Warning: Design 'DLX' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : DLX
+Version: S-2021.06-SP4
+Date   : Tue Oct 15 22:33:39 2024
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: CU_I/cw_FU_DU_reg[11]
+              (rising edge-triggered flip-flop clocked by Clk)
+  Endpoint: CU_I/cw_FU_DU_reg[1]
+            (rising edge-triggered flip-flop clocked by Clk)
+  Path Group: Clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  DLX                5K_hvratio_1_4        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  CU_I/cw_FU_DU_reg[11]/CK (DFFR_X1)       0.00 #     0.00 r
+  CU_I/cw_FU_DU_reg[11]/QN (DFFR_X1)       0.07       0.07 r
+  CU_I/U89/ZN (INV_X1)                     0.03       0.09 f
+  CU_I/U103/ZN (NOR2_X1)                   0.05       0.15 r
+  CU_I/U100/Z (BUF_X1)                     0.05       0.20 r
+  CU_I/U15/ZN (NAND2_X1)                   0.04       0.23 f
+  CU_I/U6/Z (BUF_X1)                       0.04       0.27 f
+  CU_I/U12/ZN (AND2_X1)                    0.04       0.31 f
+  CU_I/U98/ZN (OAI21_X1)                   0.03       0.35 r
+  CU_I/cw_FU_DU_reg[1]/D (DFFR_X1)         0.01       0.36 r
+  data arrival time                                   0.36
+
+  clock Clk (rise edge)                    0.40       0.40
+  clock network delay (ideal)              0.00       0.40
+  CU_I/cw_FU_DU_reg[1]/CK (DFFR_X1)        0.00       0.40 r
+  library setup time                      -0.04       0.36
+  data required time                                  0.36
+  -----------------------------------------------------------
+  data required time                                  0.36
+  data arrival time                                  -0.36
+  -----------------------------------------------------------
+  slack (MET)                                         0.01
+
+
+1

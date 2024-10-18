@@ -1,0 +1,27 @@
+# Format: clock  timeReq  slackR/slackF  holdR/holdF  instName/pinName   # cycle(s)
+@(R)->Clk(R)	0.249    -0.180/*        -0.249/*        CU_I/cw_WB_reg[1]/RN    1
+@(R)->Clk(R)	0.249    -0.180/*        -0.249/*        CU_I/cw_M_reg[1]/RN    1
+@(R)->Clk(R)	0.249    -0.180/*        -0.249/*        CU_I/cw_EXU_reg[1]/RN    1
+@(R)->Clk(R)	0.249    -0.180/*        -0.249/*        CU_I/cw_FU_DU_reg[1]/RN    1
+@(R)->Clk(R)	0.249    -0.179/*        -0.249/*        CU_I/aluOpcode1_reg[2]/RN    1
+@(R)->Clk(R)	0.249    -0.179/*        -0.249/*        CU_I/aluOpcode2_reg[2]/RN    1
+@(R)->Clk(R)	0.192    -0.123/*        -0.192/*        CU_I/aluOpcode1_reg[1]/SN    1
+@(R)->Clk(R)	0.192    -0.122/*        -0.192/*        CU_I/aluOpcode1_reg[3]/SN    1
+@(R)->Clk(R)	0.192    -0.122/*        -0.192/*        CU_I/aluOpcode1_reg[0]/SN    1
+@(R)->Clk(R)	0.192    -0.122/*        -0.192/*        CU_I/aluOpcode2_reg[3]/SN    1
+@(R)->Clk(R)	0.192    -0.122/*        -0.192/*        CU_I/aluOpcode2_reg[0]/SN    1
+@(R)->Clk(R)	0.192    -0.122/*        -0.192/*        CU_I/aluOpcode2_reg[1]/SN    1
+@(R)->Clk(R)	0.167    -0.097/*        -0.167/*        CU_I/cw_FU_DU_reg[11]/RN    1
+@(R)->Clk(R)	0.003    */0.007         */-0.003        CU_I/cw_FU_DU_reg[1]/D    1
+@(R)->Clk(R)	0.008    0.029/*         -0.008/*        CU_I/aluOpcode1_reg[0]/D    1
+@(R)->Clk(R)	0.008    0.029/*         -0.008/*        CU_I/aluOpcode1_reg[3]/D    1
+@(R)->Clk(R)	-0.017   0.036/*         0.017/*         CU_I/cw_FU_DU_reg[11]/SE    1
+@(R)->Clk(R)	0.007    0.046/*         -0.007/*        CU_I/aluOpcode1_reg[1]/D    1
+@(R)->Clk(R)	0.003    */0.052         */-0.003        CU_I/aluOpcode1_reg[2]/D    1
+Clk(R)->Clk(R)	0.003    */0.078         */-0.003        CU_I/aluOpcode2_reg[3]/D    1
+Clk(R)->Clk(R)	0.003    */0.079         */-0.003        CU_I/aluOpcode2_reg[0]/D    1
+Clk(R)->Clk(R)	0.003    */0.080         */-0.003        CU_I/aluOpcode2_reg[1]/D    1
+Clk(R)->Clk(R)	0.003    */0.081         */-0.003        CU_I/cw_EXU_reg[1]/D    1
+Clk(R)->Clk(R)	0.003    */0.081         */-0.003        CU_I/cw_M_reg[1]/D    1
+Clk(R)->Clk(R)	0.003    */0.081         */-0.003        CU_I/cw_WB_reg[1]/D    1
+Clk(R)->Clk(R)	0.003    */0.082         */-0.003        CU_I/aluOpcode2_reg[2]/D    1

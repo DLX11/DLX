@@ -1,0 +1,61 @@
+##############################################################
+#SCRIPT FOR SPEEDING UP and RECORDING the ADDER SYNTHESIS#
+# analyzing and checking vhdl netlist#
+# here the analyze command is used for each file from bottom to top #
+##############################################################
+analyze -library WORK -format vhdl {../000-globals/constants.vhd}
+analyze -library WORK -format vhdl {../000-globals/myTypes.vhd}
+analyze -library WORK -format vhdl {../000-globals/alu_types.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/01-generic_shifter.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/add4.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/adder.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/alu.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/is_zero.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/iv.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/mux21.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/ND2.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/reg.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/reg_file.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/shift2.vhd}
+analyze -library WORK -format vhdl {../a.b.a-Components/sign_extend.vhd}
+analyze -library WORK -format vhdl {../a.b.b-PipeStages/FU.vhd}
+analyze -library WORK -format vhdl {../a.b.b-PipeStages/DU.vhd}
+analyze -library WORK -format vhdl {../a.b.b-PipeStages/EXU.vhd}
+analyze -library WORK -format vhdl {../a.b.b-PipeStages/MU.vhd}
+analyze -library WORK -format vhdl {../a.b.b-PipeStages/WBU.vhd}
+analyze -library WORK -format vhdl {../a.b-DataPath.vhd}
+analyze -library WORK -format vhdl {../a.a-CU_HW.vhd}
+analyze -library WORK -format vhdl {../a-DLX.vhd}
+##############################################################
+# elaborating the top entity -- here supposed P4ADD#
+# choose the architecture you want
+elaborate DLX -architecture dlx_rtl -library work
+
+set_wire_load_model -name 5K_hvratio_1_4
+create_clock -name "Clk" -period 0.4 {"Clk"} 
+##########################################
+# first compilation, without constraints #
+compile -exact_map 
+# reporting riming and power after the first synthesis without constraints #
+report_timing > DLX_time_no_opt.rpt
+report_area > DLX_area_no_opt.rpt
+report_power > DLX_power_no_opt.rpt
+# forces a combinational max delay of REQUIRED_TIME from each of the inputs
+# to each of th eoutput, that is a delay lower than the one found after
+# the first compilation step #
+# often this is the working clock period of your system #
+set_max_delay 0.4 -from [all_inputs] -to [all_outputs]
+# optimize
+compile -map_effort high
+# save report
+report_timing > DLX_timeopt_1t.rpt
+
+#violate slack
+create_clock -name "Clk" -period 0.3 {"Clk"} 
+set_max_delay 0.3 -from [all_inputs] -to [all_outputs]
+compile -map_effort high
+report_timing > DLX_timeopt_2t.rpt
+# saving files
+write -hierarchy -format ddc -output DLX-structural-topt.ddc
+write -hierarchy -format vhdl -output DLX-structural-topt.vhdl
+write -hierarchy -format verilog -output DLX-structural-topt.v

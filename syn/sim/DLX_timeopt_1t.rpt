@@ -1,0 +1,55 @@
+Warning: Design 'DLX' has '23' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+Warning: Design 'DLX' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : DLX
+Version: S-2021.06-SP4
+Date   : Tue Oct 15 22:34:22 2024
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: CU_I/cw_FU_DU_reg[11]
+              (rising edge-triggered flip-flop clocked by Clk)
+  Endpoint: CU_I/cw_FU_DU_reg[16]
+            (rising edge-triggered flip-flop clocked by Clk)
+  Path Group: Clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  DLX                5K_hvratio_1_4        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock Clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  CU_I/cw_FU_DU_reg[11]/CK (DFFR_X1)       0.00 #     0.00 r
+  CU_I/cw_FU_DU_reg[11]/Q (DFFR_X1)        0.09       0.09 f
+  CU_I/U93/ZN (OR2_X1)                     0.07       0.15 f
+  CU_I/U3/ZN (OR4_X1)                      0.12       0.28 f
+  CU_I/U17/ZN (NAND3_X1)                   0.04       0.32 r
+  CU_I/cw_FU_DU_reg[16]/SI (SDFFR_X1)      0.01       0.33 r
+  data arrival time                                   0.33
+
+  clock Clk (rise edge)                    0.40       0.40
+  clock network delay (ideal)              0.00       0.40
+  CU_I/cw_FU_DU_reg[16]/CK (SDFFR_X1)      0.00       0.40 r
+  library setup time                      -0.07       0.33
+  data required time                                  0.33
+  -----------------------------------------------------------
+  data required time                                  0.33
+  data arrival time                                  -0.33
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1
