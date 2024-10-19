@@ -8,7 +8,7 @@ The repo is structured this way:
 - `syn/`: Holds synthesis scripts and related files.
 - `doc/`: Documentation and design specifications.
 
-# Simulation
+# SIMULATION
 There is a script to compile the whole project, just open QuestaSim on the folder Sim and type "make" in the terminal.
 There is a custom assembly file in the outer part of src folder.
 To simulate the Whole circuit use DLX_TB_v2.vhd or DLX_TB_v2_g.vhd since they are the same but using two different test.asm.mem
