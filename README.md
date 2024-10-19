@@ -2,9 +2,9 @@
 In this repo you can find a Documented design of a simple microprocessor architecture that implements some MIPS instructions. 
 The repo is structured this way: 
 - `src/`: Contains the source code for the microprocessor.
-- `sim/`: Includes simulation scripts.
     - `test/`: Custom assembly files and test cases. 
-     - `TESTBENCHES/`: VHDL testbenches.   
+     - `TESTBENCHES/`: VHDL testbenches. 
+- `sim/`: Includes simulation scripts.  
 - `syn/`: Holds synthesis scripts and related files.
 - `doc/`: Documentation and design specifications.
 
